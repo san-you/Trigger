@@ -5,13 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { SettingComponent } from './setting/setting.component';
+import { FormsModule } from '@angular/forms';
 
 import { 
   MatButtonModule, 
   MatCheckboxModule, 
   MatToolbarModule,
   MatSidenavModule,
-  MatIconModule} from '@angular/material';
+  MatIconModule,
+  MatInputModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import {
     MatToolbarModule,
     MatSidenavModule,
     BrowserAnimationsModule,
-    MatIconModule
+    MatIconModule,
+    MatInputModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

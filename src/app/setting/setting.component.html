@@ -1,3 +1,30 @@
-<p>
-  setting works!
-</p>
+<div class="setting-container">
+
+  <div *ngFor="let item of config; let i = index;">
+    <mat-form-field ngDefaultControl  class="input-name" >
+      <input matInput placeholder="Your app's name" [(ngModel)]="item.name">
+    </mat-form-field>
+    <mat-form-field ngDefaultControl  class="input-path" >
+      <input matInput placeholder="Your .exe path" [(ngModel)]="item.path">
+    </mat-form-field>
+  </div>
+
+  <div>
+    <button mat-raised-button color="accent" (click)="launchApp('Steam')">
+      <mat-icon>edit</mat-icon>
+      Edit
+    </button>
+  </div>
+  <div>
+    <button mat-raised-button color="primary" (click)="launchApp('Steam')">
+      <mat-icon>add</mat-icon>
+      Add
+    </button>
+  </div>
+  <div>
+    <button mat-raised-button color="warn" (click)="save()">
+      <mat-icon>save</mat-icon>
+      save
+    </button>
+  </div>
+</div>
