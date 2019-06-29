@@ -6,14 +6,16 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { SettingComponent } from './setting/setting.component';
 import { FormsModule } from '@angular/forms';
-
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { SettingJsonService } from './service/setting-json.service';
 import { 
   MatButtonModule, 
   MatCheckboxModule, 
   MatToolbarModule,
   MatSidenavModule,
   MatIconModule,
-  MatInputModule} from '@angular/material';
+  MatInputModule,
+  MatSnackBarModule,} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -32,8 +34,12 @@ import {
     MatIconModule,
     MatInputModule,
     FormsModule,
+    FlexLayoutModule,
+    MatSnackBarModule,
   ],
-  providers: [],
+  providers: [
+    SettingJsonService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

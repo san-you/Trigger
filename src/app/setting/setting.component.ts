@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SettingJsonService } from '../service/setting-json.service';
 
-var fs = require('fs');
-
+const fs = require('fs');
 const Store = require('electron-store');
 const store = new Store();
 
@@ -24,15 +25,13 @@ export class SettingComponent implements OnInit {
     name: string,
     path: string,
   }};
-  constructor() {    
-    this.tmpConfig = JSON.parse(fs.readFileSync(store.path, 'utf8'));
-    for (var i = 0; i < 100; i++) {
-      if(typeof this.tmpConfig[i] !== 'undefined'){
-        this.config.push(this.tmpConfig[i]);
-      }else{
-        break;
-      }
-    }
+  disabledEdit :boolean = true;
+  showEdit: boolean = false;
+
+  constructor(
+    private snackBar: MatSnackBar,
+    private settingJsonService: SettingJsonService) {    
+    this.config = this.settingJsonService.initialConfig();
   }
 
   ngOnInit() {
@@ -40,8 +39,56 @@ export class SettingComponent implements OnInit {
   }
 
   save() {
+    console.log(store.path);
+    fs.unlinkSync(store.path);
     store.set(this.config);
-    alert('Save successful!!');
+    this.toggleEdit();
+    this.snackBar.open(
+			'Save successfull!!',
+			'Close',
+			{
+				'duration': 5000,	
+        'direction': 'ltr',
+        'horizontalPosition': 'right',
+        'verticalPosition': 'top',
+        'panelClass': ['save-snack-bar'],
+			}
+		);
+  }
+
+  toggleEdit(){
+    if(this.disabledEdit){
+      this.disabledEdit = false;
+      this.showEdit = true;
+    }
+    else {
+      this.disabledEdit = true;
+      this.showEdit = false;
+      this.config = this.settingJsonService.initialConfig();
+    }
+  }
+
+  add(){
+    this.config.push({
+      name: "",
+      path: "",
+    });
+  }
+
+  remove(i){
+    this.snackBar.open(
+			'Deleted ' + this.config[i].name+ ' setting.',
+			'Close',
+			{
+				'duration': 5000,	
+        'direction': 'ltr',
+        'horizontalPosition': 'right',
+        'verticalPosition': 'top',
+        'panelClass': ['delete-snack-bar'],
+			}
+    );
+    console.log(i);
+    this.config.splice(i, 1);
   }
 }
 

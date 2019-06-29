@@ -1,30 +1,40 @@
 <div class="setting-container">
-
-  <div *ngFor="let item of config; let i = index;">
-    <mat-form-field ngDefaultControl  class="input-name" >
-      <input matInput placeholder="Your app's name" [(ngModel)]="item.name">
-    </mat-form-field>
-    <mat-form-field ngDefaultControl  class="input-path" >
-      <input matInput placeholder="Your .exe path" [(ngModel)]="item.path">
-    </mat-form-field>
-  </div>
-
   <div>
-    <button mat-raised-button color="accent" (click)="launchApp('Steam')">
-      <mat-icon>edit</mat-icon>
-      Edit
-    </button>
+    <div *ngFor="let item of config; let i = index;">
+      <div class='page-content'>
+        <mat-form-field ngDefaultControl  class="input-name">
+          <input matInput placeholder="Your app's name" [(ngModel)]="item.name" [disabled]='disabledEdit'>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field ngDefaultControl  class="input-path">
+          <input matInput placeholder="Your .exe path" [(ngModel)]="item.path" [disabled]='disabledEdit'>
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="remove(i)" *ngIf="showEdit" class="remove">
+            <mat-icon>delete_forever</mat-icon>
+            Remove
+          </button>
+      </div>
+    </div>
+    <div class="margin">
+    </div>
   </div>
-  <div>
-    <button mat-raised-button color="primary" (click)="launchApp('Steam')">
-      <mat-icon>add</mat-icon>
-      Add
-    </button>
-  </div>
-  <div>
-    <button mat-raised-button color="warn" (click)="save()">
-      <mat-icon>save</mat-icon>
-      save
-    </button>
+  <div class="page-footer">
+    <button mat-raised-button color="primary" (click)="toggleEdit()" *ngIf="disabledEdit" class="button">
+        <mat-icon>edit</mat-icon>
+        Edit
+      </button>
+      <button mat-raised-button (click)="toggleEdit()" *ngIf="showEdit" class="button">
+        <mat-icon>cancel</mat-icon>
+        cancel
+      </button>
+      <button mat-raised-button color="warn" (click)="add()" *ngIf="showEdit" class="add">
+        <mat-icon>add</mat-icon>
+        Add
+      </button>
+      <button mat-raised-button color="accent" (click)="save()" *ngIf="showEdit" class="save">
+        <mat-icon>save</mat-icon>
+        save
+      </button>
   </div>
 </div>

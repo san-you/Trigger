@@ -2,7 +2,8 @@
 
 
 <mat-sidenav-container class="example-container">
-  <mat-sidenav #sidenav mode="side" opened>
+  <!-- <mat-sidenav #sidenav mode="side" opened> -->
+  <mat-sidenav #sidenav mode="side">
     <div>
       <button mat-button class="menu" (click)="sidenav.toggle()">
         <mat-icon class="menu-icon">close</mat-icon>
@@ -21,7 +22,7 @@
   </mat-sidenav>
   <!-- main content -->
   <mat-sidenav-content>
-    <mat-toolbar color="accent">
+    <mat-toolbar color="accent" class="header-toolbar">
       <mat-toolbar-row>
         <button mat-button (click)="sidenav.toggle()">
             <mat-icon>menu</mat-icon>

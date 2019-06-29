@@ -1,7 +1,72 @@
+.setting-container{
+    margin-top: 64px;
+    height: calc(100% - 64px);
+    // display: flex;
+    // flex-direction: column;
+}
+
 .input-name{
-    width: 30%
+    width: 30%;
+    margin-top: 15px;
+    margin-left: 30px;
 }
 
 .input-path{
-    width: 80%
+    width: 80%;
+    margin-left: 30px;
+}
+
+.button{
+    margin-top: 5px;
+    margin-left: 30px;
+    margin-bottom: 5px;
+}
+
+.add{
+    margin-top: 5px;
+    margin-left: 60%;
+    margin-bottom: 5px;
+}
+
+.save{
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+.remove{
+    margin-left: 80%;
+}
+
+::ng-deep .save-snack-bar{
+    background-color:#1DE9B6;
+    color: white;
+    width: 80%;
+}
+
+::ng-deep .delete-snack-bar{
+    background-color:#F44336;
+    color: white;
+    width: 80%;
+}
+.page-content {
+    flex: 1 1 auto;
+    position: relative;/* need this to position inner content */
+    overflow-y: auto;
+  }
+  
+.page-footer {
+    margin-top: 1px;
+    background-color:#424242;
+    border-top: 1px #FAFAFA;
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+    z-index: 2;
+  }
+
+.margin{
+    height: 70px;
+    padding: 0;
+    margin: 0;
 }

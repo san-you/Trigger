@@ -22,3 +22,9 @@ mat-sidenav-container{
 mat-sidenav{
     width: 51px;
 }
+
+.header-toolbar{
+    top: 0;
+    position: fixed;
+    z-index:999;
+}
