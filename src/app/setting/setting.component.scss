@@ -12,7 +12,7 @@
 }
 
 .input-path{
-    width: 80%;
+    width: 75%;
     margin-left: 30px;
 }
 
@@ -34,17 +34,24 @@
     margin-bottom: 5px;
 }
 
-.remove{
+.delete{
     margin-left: 80%;
+    margin-bottom: 5px;
 }
 
-::ng-deep .save-snack-bar{
-    background-color:#1DE9B6;
+::ng-deep .green-snack-bar{
+    background-color:#00BFA5;
     color: white;
     width: 80%;
 }
 
-::ng-deep .delete-snack-bar{
+::ng-deep .orange-snack-bar{
+    background-color:#FF9100;
+    color: white;
+    width: 80%;
+}
+
+::ng-deep .red-snack-bar{
     background-color:#F44336;
     color: white;
     width: 80%;

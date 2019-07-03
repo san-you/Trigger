@@ -39,11 +39,9 @@ export class SettingJsonService {
     }
 
     this.tmpConfig = JSON.parse(fs.readFileSync(store.path, 'utf8'));
-    for (var i = 0; i < 100; i++) {
+    for (var i = 0; i < Object.keys(this.tmpConfig).length; i++) {
       if(typeof this.tmpConfig[i] !== 'undefined'){
         this.config.push(this.tmpConfig[i]);
-      }else{
-        break;
       }
     }
     

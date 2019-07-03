@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { SettingJsonService } from '../service/setting-json.service';
+import { SettingJsonService } from '../service/setting-json/setting-json.service';
 
 const fs = require('fs');
 const Store = require('electron-store');
@@ -21,25 +21,69 @@ export class SettingComponent implements OnInit {
     name: string,
     path: string,
   }>();
-  tmpConfig: {[key: string]:{
-    name: string,
-    path: string,
-  }};
   disabledEdit :boolean = true;
   showEdit: boolean = false;
 
   constructor(
     private snackBar: MatSnackBar,
     private settingJsonService: SettingJsonService) {    
+    }
+
+  ngOnInit() {
     this.config = this.settingJsonService.initialConfig();
   }
 
-  ngOnInit() {
-
-  }
-
   save() {
-    console.log(store.path);
+    if(!this.checkName()){
+      this.snackBar.open(
+        'Name is required.',
+        'Close',
+        {
+          'duration': 5000,	
+          'direction': 'ltr',
+          'horizontalPosition': 'right',
+          'verticalPosition': 'top',
+          'panelClass': ['red-snack-bar'],
+        }
+      );
+      return;
+    }
+    var errorAppName = this.checkPath();
+    if(errorAppName !== ''){
+      this.snackBar.open(
+        errorAppName + '\'s path does not exist.',
+        'Close',
+        {
+          'duration': 5000,	
+          'direction': 'ltr',
+          'horizontalPosition': 'right',
+          'verticalPosition': 'top',
+          'panelClass': ['red-snack-bar'],
+        }
+      );
+      return;
+    }
+    errorAppName = this.checkEXE();
+    if(errorAppName !== ''){
+      this.snackBar.open(
+        errorAppName + ' is not exe.',
+        'Close',
+        {
+          'duration': 5000,	
+          'direction': 'ltr',
+          'horizontalPosition': 'right',
+          'verticalPosition': 'top',
+          'panelClass': ['red-snack-bar'],
+        }
+      );
+      return;
+    }
+    if(this.config.length === 0){
+      this.config.push({
+        name: "",
+        path: "",
+      });
+    }
     fs.unlinkSync(store.path);
     store.set(this.config);
     this.toggleEdit();
@@ -51,7 +95,7 @@ export class SettingComponent implements OnInit {
         'direction': 'ltr',
         'horizontalPosition': 'right',
         'verticalPosition': 'top',
-        'panelClass': ['save-snack-bar'],
+        'panelClass': ['green-snack-bar'],
 			}
 		);
   }
@@ -75,7 +119,7 @@ export class SettingComponent implements OnInit {
     });
   }
 
-  remove(i){
+  delete(i){
     this.snackBar.open(
 			'Deleted ' + this.config[i].name+ ' setting.',
 			'Close',
@@ -84,11 +128,38 @@ export class SettingComponent implements OnInit {
         'direction': 'ltr',
         'horizontalPosition': 'right',
         'verticalPosition': 'top',
-        'panelClass': ['delete-snack-bar'],
+        'panelClass': ['orange-snack-bar'],
 			}
     );
-    console.log(i);
     this.config.splice(i, 1);
+  }
+
+  checkName(){
+    for (let index = 0; index < this.config.length; index++) {
+      var name = this.config[index].name;
+      if(name === ''){
+        return false;
+      }
+    }
+    return true;
+  }
+  checkPath (){
+    for (let index = 0; index < this.config.length; index++) {
+      var path = this.config[index].path;
+      if(!this.settingJsonService.check(path)){
+        return this.config[index].name;
+      }
+    }
+    return '';
+  }
+  checkEXE (){
+    for (let index = 0; index < this.config.length; index++) {
+      var path = this.config[index].path;
+      if(path.slice(-4) !== ".exe"){
+        return this.config[index].name;
+      }
+    }
+    return '';
   }
 }
 

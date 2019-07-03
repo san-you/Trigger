@@ -1,3 +1,17 @@
+mat-sidenav-container{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+mat-sidenav{
+    width: 51px;
+}
+
+mat-toolbar-row{
+    padding: 0;
+}
+
 .menu{
     margin: 0;
     padding: 0;
@@ -13,18 +27,20 @@
     font-size: 35px;
 }
 
-mat-sidenav-container{
-    margin: 0;
-    padding: 0;
-    height: 100%;
-}
-
-mat-sidenav{
-    width: 51px;
-}
-
 .header-toolbar{
     top: 0;
     position: fixed;
     z-index:999;
+}
+
+.toggle{
+    padding: 0;
+    margin: 0;
+    width: 24px;
+}
+
+.logo{
+}
+.title{
+    margin-left: 5px;
 }

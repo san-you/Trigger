@@ -1,10 +1,32 @@
-.button{
-    margin-left: 5px;
-    margin-right: 5px;
+.launch-button{
     margin-bottom: 5px;
-    margin-top: 10px;
+    margin-right: 2%;
+    float: right;
 }
 
 .home-container{
-    margin-top: 56px;
+    margin-top: 64px;
+    height: calc(100% - 64px);
+}
+
+::ng-deep .launch-snack-bar{
+    background-color:#00BFA5;
+    color: white;
+    width: 80%;
+}
+
+.app-title{
+    font-size: 25px;
+    margin-top: 25px;
+    margin-left: 25px;
+}
+
+.app-launch-time{
+    font-size: 13px;
+    margin-left: 25px;
+}
+
+.app-path{
+    font-size: 13px;
+    margin-left: 25px;
 }

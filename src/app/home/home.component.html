@@ -1,14 +1,20 @@
 <div class="home-container">
-  <div class="button">
-    <button mat-raised-button (click)="launchApp('Steam')">Steam</button>
+  <div *ngIf="show; else notSaveApp">
+    <div *ngFor="let item of config; let i = index;">
+      <div>
+        <div class="app-title">
+          <span>{{item.name}}</span>
+        </div>
+        <div class="app-launch-time">
+          <span>Last launch time: {{getLaunchTime(item.name)}}</span>
+          <button mat-raised-button color="accent" (click)="launchApp(item.name, item.path, i)" class="launch-button">Launch</button>
+        </div>
+        <div>
+          <span class="app-path">path: {{item.path}}</span>
+        </div>
+      </div>
+      <mat-divider style="clear: right"></mat-divider>
+    </div>
   </div>
-  <div class="button">
-    <button mat-raised-button color="primary" (click)="launchApp('Epic')">Epic</button>
-  </div>
-  <div class="button">
-    <button mat-raised-button color="accent" (click)="launchApp('Origin')">Origin</button>
-  </div>
-  <div class="button">
-    <button mat-raised-button color="warn" (click)="launchApp('BattleNet')">Battle Net</button>
-  </div>
+  <ng-template #notSaveApp>First, Please register the app in setting screen</ng-template>
 </div>

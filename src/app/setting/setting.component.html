@@ -3,18 +3,19 @@
     <div *ngFor="let item of config; let i = index;">
       <div class='page-content'>
         <mat-form-field ngDefaultControl  class="input-name">
-          <input matInput placeholder="Your app's name" [(ngModel)]="item.name" [disabled]='disabledEdit'>
+          <input matInput required placeholder="Your app's name" [(ngModel)]="item.name" [disabled]='disabledEdit'>
         </mat-form-field>
       </div>
       <div>
         <mat-form-field ngDefaultControl  class="input-path">
-          <input matInput placeholder="Your .exe path" [(ngModel)]="item.path" [disabled]='disabledEdit'>
+          <input matInput required placeholder="Your .exe path" [(ngModel)]="item.path" [disabled]='disabledEdit'>
         </mat-form-field>
-        <button mat-raised-button color="primary" (click)="remove(i)" *ngIf="showEdit" class="remove">
+        <button mat-raised-button color="primary" (click)="delete(i)" *ngIf="showEdit" class="delete">
             <mat-icon>delete_forever</mat-icon>
             Remove
           </button>
       </div>
+      <mat-divider></mat-divider>
     </div>
     <div class="margin">
     </div>

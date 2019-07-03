@@ -24,10 +24,11 @@
   <mat-sidenav-content>
     <mat-toolbar color="accent" class="header-toolbar">
       <mat-toolbar-row>
-        <button mat-button (click)="sidenav.toggle()">
+        <button mat-button class='toggle' (click)="sidenav.toggle()">
             <mat-icon>menu</mat-icon>
         </button>
-        <span>Trigger</span>
+        <img class='logo' width="35" height="35" src="./assets/img/logo white.png">
+        <span class='title'>Trigger</span>
       </mat-toolbar-row>
     </mat-toolbar>  
     <router-outlet></router-outlet>

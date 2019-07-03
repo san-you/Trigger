@@ -7,7 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { SettingComponent } from './setting/setting.component';
 import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { SettingJsonService } from './service/setting-json.service';
+import { SettingJsonService } from './service/setting-json/setting-json.service';
 import { 
   MatButtonModule, 
   MatCheckboxModule, 
@@ -15,7 +15,8 @@ import {
   MatSidenavModule,
   MatIconModule,
   MatInputModule,
-  MatSnackBarModule,} from '@angular/material';
+  MatSnackBarModule,
+  MatDividerModule,} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import {
     FormsModule,
     FlexLayoutModule,
     MatSnackBarModule,
+    MatDividerModule,
   ],
   providers: [
     SettingJsonService,
