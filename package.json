@@ -10,7 +10,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "electron": "ng build --extraWebpackConfig webpack.extra.js && electron .",
-    "package": "electron-packager ."
+    "package": "electron-packager . --icon=src/assets/img/favicon.ico"
   },
   "private": true,
   "dependencies": {
