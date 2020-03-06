@@ -2,6 +2,8 @@
 ElectronとAngularを使ったシンプルなexeランチャーです。
 現在windowsのみ対応してます。
 
+![image.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/403521/5e157770-f270-cfb2-362b-3cc0d9e94c05.png)
+
 ## 起動方法
 https://github.com/san-you/Trigger/releases/download/v1.0.0/Trigger_Packaged.zip
 ダウンロードして解答して下さい。そして解凍したフォルダ内のtrigger.exeを起動してください。
