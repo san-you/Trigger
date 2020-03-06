@@ -9,8 +9,9 @@ https://github.com/san-you/Trigger/releases/download/v1.0.0/Trigger_Packaged.zip
 ダウンロードして解答して下さい。そして解凍したフォルダ内のtrigger.exeを起動してください。
 
 ## 使用方法
-STEP1 設定画面でパスを打ち込む
-STEP2 ホーム画面でそのexeを起動
+**STEP1** 設定画面でパスを打ち込む
+
+**STEP2** ホーム画面でそのexeを起動
 
 ### 初回起動時
 まず設定画面でアプリのパスを設定してください。
